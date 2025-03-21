@@ -52,7 +52,7 @@ def start_zmq_server_as_subprocess(zmq_url=None, server_args=[]):
     # Copy existing environmental variables as some of them might be needed
     # e.g. on Windows SYSTEMROOT and PATH
     env = dict(os.environ)
-    env["PYTHONPATH"] = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    #env["PYTHONPATH"] = os.path.dirname(os.path.dirname(os.path.dirname(__file__))) # *Overwrites your dependency resolution env var*. I can't wait to return to Rust.
     # Use start_new_session if it's available. Without it, in jupyter the server
     # goes down when we cancel execution of any cell in the notebook.
     server_proc = subprocess.Popen(args,
